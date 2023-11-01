@@ -8,3 +8,6 @@ resource "aws_instance" "example" {
         Name = "linux_aws_github_actions"
     }
 }
+
+#hello
+
