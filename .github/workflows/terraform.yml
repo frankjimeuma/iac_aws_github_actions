@@ -24,12 +24,12 @@ jobs:
 
       - name: Terraform listing directory
         run: ls
+      
+      - name: Terraform Init
+        run: terraform init
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
-
-      #- name: Terraform Init
-       # run: terraform init
 
       #- name: Terraform Validate
        # run: terraform validate
