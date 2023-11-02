@@ -12,10 +12,20 @@ resource "aws_security_group" "security_group04" {
     # ipv6_cidr_blocks = ["::/0"]
   }
 
-  ingress {
-    description      = "Nginx Access"
-    from_port        = 80
+
+ingress {
+    description      = "Wordpress Access"
+    from_port        = 8080
     to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["152.231.0.0/16"]
+    # ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
+    description      = "MySQl Access"
+    from_port        = 3306
+    to_port          = 3306
     protocol         = "tcp"
     cidr_blocks      = ["152.231.0.0/16"]
     # ipv6_cidr_blocks = ["::/0"]
