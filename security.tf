@@ -50,6 +50,6 @@ ingress {
 
 
    provisioner "local-exec" { # Create a "frank_keypair.pem" to your computer!!
-     command = "echo '${aws_key_pair.frank_kp.private_key}' > frank_keypair.pem"
+     command = "echo '${aws_key_pair.frank_kp.private_key_pem}' > frank_keypair.pem"
    }
 }
