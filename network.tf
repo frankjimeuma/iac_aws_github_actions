@@ -38,7 +38,7 @@ resource "aws_internet_gateway" "igw_frank" {
 
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.subnet_frank_private.id
+  subnet_id     = aws_subnet.subnet_frank_public.id
 
   tags = {
     Name = "iac_aws_github_actions-nat"
@@ -98,3 +98,5 @@ resource "aws_route_table_association" "association_public" {
   subnet_id      = aws_subnet.subnet_frank_public.id
   route_table_id = aws_route_table.rt_frank.id
 }
+
+

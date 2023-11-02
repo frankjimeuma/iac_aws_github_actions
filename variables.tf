@@ -20,5 +20,5 @@ variable "securitygroup_name" {
     type = string
     description = "Enter the securitygroup name"
     # defaulth = "DemoClase05"
-    default = "10.0.2.0/24"
+    default = "iac_aws_github_actions_SG"
 }
