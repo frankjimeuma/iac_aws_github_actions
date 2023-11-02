@@ -76,7 +76,7 @@ sudo usermod -aG docker $USER
 newgrp docker
 
 # Install MySql:
-docker run --name frankdb -v /mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Password123 -d mysql
+docker run --name frankdb -v /mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Password123 -dp 3306:3306 mysql
 EOF
 
   tags = {
