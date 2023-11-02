@@ -12,7 +12,7 @@ terraform {
 
 provider "aws" {}
 
-resource "aws_instance" "frank_instance_private" {
+resource "aws_instance" "frank_instance_public" {
   ami           = "ami-053b0d53c279acc90"  # ubuntu AMI
   instance_type = "t2.micro"
   key_name = aws_key_pair.frank_kp.key_name
