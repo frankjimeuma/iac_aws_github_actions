@@ -16,7 +16,7 @@ resource "aws_security_group" "security_group04" {
 ingress {
     description      = "Wordpress Access"
     from_port        = 8080
-    to_port          = 80
+    to_port          = 8080
     protocol         = "tcp"
     cidr_blocks      = ["152.231.0.0/16"]
     # ipv6_cidr_blocks = ["::/0"]
