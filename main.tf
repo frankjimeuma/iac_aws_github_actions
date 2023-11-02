@@ -13,7 +13,7 @@ terraform {
 provider "aws" {}
 
 resource "aws_instance" "frank_instance_public" {
-  ami           = "ami-053b0d53c279acc90"  # ubuntu AMI
+  ami           = "ami-0fc5d935ebf8bc3bc"  # ubuntu AMI
   instance_type = "t2.micro"
   key_name = "frank_keypair" #aws_key_pair.frank_kp.key_name
   subnet_id = aws_subnet.subnet_frank_public.id
@@ -41,15 +41,15 @@ newgrp docker
 
 # Install Wordpress:
 docker run --name frankwp -v /wordpress_data:/var/www/html -dp 8080:80 wordpress
-
 EOF
+
   tags = {
     Name = "PublicInstance"
   }
 }
 
 resource "aws_instance" "frank_instance_private" {
-  ami           = "ami-053b0d53c279acc90"  # ubuntu AMI
+  ami           = "ami-0fc5d935ebf8bc3bc"  # ubuntu AMI
   instance_type = "t2.micro"
   key_name = "frank_keypair" #aws_key_pair.frank_kp.key_name
   subnet_id = aws_subnet.subnet_frank_private.id
@@ -77,8 +77,8 @@ newgrp docker
 
 # Install MySql:
 docker run --name frankdb -v /mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Password123 -d mysql
-
 EOF
+
   tags = {
     Name = "PrivateInstance"
   }
