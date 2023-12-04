@@ -16,9 +16,16 @@ variable "cidr_private_subnet" {
     default = "10.0.2.0/24"
 }
 
-variable "securitygroup_name" {
+variable "securitygroup_name_app" {
     type = string
     description = "Enter the securitygroup name"
     # defaulth = "DemoClase05"
-    default = "iac_aws_github_actions_SG"
+    default = "iac_aws_github_actions_SGApp"
+}
+
+variable "securitygroup_name_db" {
+    type = string
+    description = "Enter the securitygroup name"
+    # defaulth = "DemoClase05"
+    default = "iac_aws_github_actions_SG_db"
 }

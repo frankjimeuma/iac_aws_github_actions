@@ -17,7 +17,7 @@ resource "aws_instance" "frank_instance_public" {
   instance_type = "t2.micro"
   key_name = "frank_keypair" #aws_key_pair.frank_kp.key_name
   subnet_id = aws_subnet.subnet_frank_public.id
-  vpc_security_group_ids = [aws_security_group.security_group04.id]
+  vpc_security_group_ids = [aws_security_group.app_servers_sg.id]
   user_data = <<EOF
 #!/bin/bash
 sudo sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
@@ -53,7 +53,7 @@ resource "aws_instance" "frank_instance_private" {
   instance_type = "t2.micro"
   key_name = "frank_keypair" #aws_key_pair.frank_kp.key_name
   subnet_id = aws_subnet.subnet_frank_private.id
-  vpc_security_group_ids = [aws_security_group.security_group04.id]
+  vpc_security_group_ids = [aws_security_group.mysql_sg.id]
   user_data = <<EOF
 #!/bin/bash
 sudo sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf

@@ -1,6 +1,37 @@
-resource "aws_security_group" "security_group04" {
-  name        = var.securitygroup_name
-  description = "Demo Security Group"
+resource "aws_security_group" "mysql_sg" {
+  name        = var.securitygroup_name_db
+  description = "Allow ingress access to MySQL database from Application Servers"
+
+  ingress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    security_groups = [aws_security_group.app_servers_sg.id]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = var.securitygroup_name_db
+  }
+}
+
+
+
+
+
+
+
+
+
+resource "aws_security_group" "app_servers_sg" {
+  name        = var.securitygroup_name_app
+  description = "Allow ingress access to Wordpress Webserver"
    vpc_id      = aws_vpc.vpc_frank.id
 
   ingress {
@@ -22,25 +53,16 @@ ingress {
     # ipv6_cidr_blocks = ["::/0"]
   }
 
-  ingress {
-    description      = "MySQl Access"
-    from_port        = 3306
-    to_port          = 3306
-    protocol         = "tcp"
-    cidr_blocks      = ["152.231.0.0/16"]
+egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
     # ipv6_cidr_blocks = ["::/0"]
   }
 
-   egress {
-     from_port        = 0
-     to_port          = 0
-     protocol         = "-1"
-     cidr_blocks      = ["0.0.0.0/0"]
-     ipv6_cidr_blocks = ["::/0"]
-  }
-
    tags = {
-     Name = var.securitygroup_name
+     Name = var.securitygroup_name_app
    }
 }
 

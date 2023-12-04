@@ -36,6 +36,17 @@ resource "aws_internet_gateway" "igw_frank" {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.subnet_frank_public.id
@@ -75,9 +86,6 @@ resource "aws_route_table_association" "private" {
   
 
 }
-
-
-
 
 
 resource "aws_route_table" "rt_frank" {
