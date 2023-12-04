@@ -1,6 +1,7 @@
 resource "aws_security_group" "mysql_sg" {
   name        = var.securitygroup_name_db
   description = "Allow ingress access to MySQL database from Application Servers"
+    vpc_id      = aws_vpc.vpc_frank.id
 
   ingress {
     from_port   = 3306
